@@ -1,54 +1,57 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { EnvVariable } from 'src/assets/domain';
-
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private loggedIn = new BehaviorSubject<boolean>(false);
-  private userType = new BehaviorSubject<string>('');
-
-  
+ 
 
   constructor(
     private router: Router,
     private http: HttpClient,
-    // private notify: ToastyService
+    private notify: ToastrService
   ) {}
   private server = EnvVariable;
-  baseUrl = `${this.server.baseUrl}User`;
+  baseUrl = `${this.server.baseUrl}`;
   login(loginDto: any): Observable<any> {
-    const apiUrl = `${this.baseUrl}/Users`;
-    // const credentials = { userId: userId, password: password };
+    const apiUrl = `${this.baseUrl}login`;
 
-    return this.http.post<any>(apiUrl, loginDto);
+    return this.http.post<any>(apiUrl, loginDto).pipe(
+      map((response: any) => {
+        // To Check if the response contains a token
+        if (response && response.token) {
+          // System should Return the token
+          return response.token;
+        }
+        // If token is not present in the response, we should handle accordingly (throw error, etc.)
+        throw new Error('Invalid response format');
+      })
+    );
   }
 
+  registerUser(userData: any): Observable<any> {
+    const apiUrl = `${this.baseUrl}/register`;
+    return this.http.post<any>(apiUrl, userData);
+  }
   
-
-  
- 
- 
-
   setCredentials(user: any) {
     console.log('setCredentials', user);
-    console.log('user.userType', user[0].userType);
-    if (user && user[0].userType) {
+   
+    if (user) {
       this.loggedIn.next(true);
-      this.userType.next(user[0].userType);
+    
 
       // Store user details in local storage
       // localStorage.setItem('accessToken', user.accessToken);
-      localStorage.setItem('userType', user[0].userType);
-      localStorage.setItem('userData', JSON.stringify(user));
-     
-
       
+      localStorage.setItem('userData', JSON.stringify(user));
     }
   }
 
@@ -59,11 +62,10 @@ export class AuthService {
 
   logout() {
     // console.log('Logout method called');
-    localStorage.removeItem('userType');
     localStorage.removeItem('userData');
-    // this.notify.success('Logged out Successfully', 4000);
+    this.notify.success('Logged out Successfully');
     this.loggedIn.next(false);
-    this.userType.next('');
+   
     this.router.navigate(['/auth']);
   }
 
@@ -71,16 +73,12 @@ export class AuthService {
     return this.loggedIn.asObservable();
   }
 
-  getUserType() {
-    return this.userType.asObservable();
-  }
+ 
 
   // Additional methods for auth guard
   isLoggedInValue(): boolean {
     return this.loggedIn.value;
   }
 
-  getUserTypeValue(): string {
-    return this.userType.value;
-  }
+ 
 }
