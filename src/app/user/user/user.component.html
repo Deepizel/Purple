@@ -1,6 +1,7 @@
 <app-navbar></app-navbar>
 <section class="d-flex justify-content-center align-items-center h-100">
-  <div class="col-md-5">
+ <!-- form for viewing and editing user data -->
+    <div class="col-lg-8 mt-5">
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-4 bg-light rounded">
       <div class="form-group">
         <label for="id">ID</label>
@@ -24,4 +25,6 @@
       </div>
     </form>
   </div>
+  
+  
 </section>

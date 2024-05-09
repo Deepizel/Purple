@@ -57,7 +57,7 @@ export class UserComponent implements OnInit {
     );
   }
   goBack() {
-    this.router.navigate(['/user-list']);
+    this.router.navigate(['/user/users']);
   }
   updateUser() {
     if (this.form.valid) {

@@ -9,7 +9,7 @@
 /* global.css */
 
 :root {
-  --primary-color:white;
+  --primary-color:rgb(30, 8, 8);
   --secondary-color: #001f3f;
   --font-size: 16px;
 }
@@ -409,7 +409,7 @@ tbody td {
 thead tr th {
   font-size: 14px !important;
   font-weight: 400 !important;
-  color: #120303 !important;
+  color: white !important;
   background-color: var(--primary-color) !important;
 }
 
