@@ -1,26 +1,37 @@
 
-
-/* Hero section styles */
 .hero-section {
   position: relative;
   height: 100vh;
   overflow: hidden;
+  background-image: url(/assets/images/purple2.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-/* Navbar styles */
+
 .navbar-fixed-top {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000; /* Ensure the navbar appears above other content */
+  z-index: 1000; 
   background-color: transparent;
   width: 100%;
 }
 
-/* Carousel styles */
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+
 .carousel {
-  height: 100%; /* Fill the entire hero section */
+  height: 100%; 
 }
 
 .carousel-item {
