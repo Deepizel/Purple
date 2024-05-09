@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+<section class="d-flex justify-content-center align-items-center h-100">
+  <div class="col-md-5">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-4 bg-light rounded">
+      <div class="form-group">
+        <label for="id">ID</label>
+        <input type="text" id="id" formControlName="id" class="form-control" readonly>
+      </div>
+      <div class="form-group">
+        <label for="first_name">First Name</label>
+        <input type="text" id="first_name" formControlName="first_name" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="last_name">Last Name</label>
+        <input type="text" id="last_name" formControlName="last_name" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" formControlName="email" class="form-control">
+      </div>
+      <div class="form-group mt-2">
+        <button type="button" class="btn btn-secondary" (click)="goBack()">Save</button>
+        <button type="button" class="btn btn-secondary mx-2" (click)="updateUser()">Update</button>
+      </div>
+    </form>
+  </div>
+</section>

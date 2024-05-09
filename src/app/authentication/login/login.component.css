@@ -5,7 +5,7 @@
 
 .signIn-form {
     /* background: #FFFFFF33; */
-    background: #FFf;
+    background: #e3cbcb;
     width: 531px;
     display: flex;
     justify-content: center;
@@ -18,7 +18,7 @@
     padding: 10px, 20px, 10px, 20px !important;
     border-radius: 5px;
     background: var(--primary-color);
-    color: white;
+    color: rgb(229, 66, 66);
     font-family: 'Poppins';
     font-size: 15px;
     height: 50px;

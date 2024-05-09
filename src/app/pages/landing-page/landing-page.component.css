@@ -1,0 +1,28 @@
+
+
+/* Hero section styles */
+.hero-section {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Navbar styles */
+.navbar-fixed-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Ensure the navbar appears above other content */
+  background-color: transparent;
+  width: 100%;
+}
+
+/* Carousel styles */
+.carousel {
+  height: 100%; /* Fill the entire hero section */
+}
+
+.carousel-item {
+  height: 100%;
+}

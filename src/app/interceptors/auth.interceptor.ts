@@ -7,17 +7,19 @@ import {
   HttpResponse,
   HttpErrorResponse,
 } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 // import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { AuthService } from '../service/auth.service';
 // import { AuthService } from './auth.service';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   constructor(
-    // private toastr: ToastrService,
+    private toastr: ToastrService,
     private router: Router,
-    // private authService: AuthService
+    private authService: AuthService
   ) {}
   intercept(
     req: HttpRequest<any>,
@@ -38,9 +40,9 @@ export class AuthInterceptor implements HttpInterceptor {
             if (this.router.url !== '/auth/login') {
             //   this.authService.logout();
               this.router.navigate(['/auth/login']);
-            //   this.toastr.info(
-            //     'Your session has expired and you have been logged out'
-            //   );
+              this.toastr.info(
+                'Your session has expired and you have been logged out'
+              );
             }
           }
           return throwError(err);

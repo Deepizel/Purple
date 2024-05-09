@@ -1,4 +1,6 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
+/* styles.css or styles.scss */
+@import '~bootstrap-icons/font/bootstrap-icons.css';
 
 /* @import "~@fortawesome/fontawesome-free/css/all.css";
 @import "~bootstrap-icons/font/bootstrap-icons.css"; */
@@ -7,7 +9,7 @@
 /* global.css */
 
 :root {
-  --primary-color: #ffa500;
+  --primary-color:white;
   --secondary-color: #001f3f;
   --font-size: 16px;
 }
@@ -407,7 +409,7 @@ tbody td {
 thead tr th {
   font-size: 14px !important;
   font-weight: 400 !important;
-  color: #fff !important;
+  color: #120303 !important;
   background-color: var(--primary-color) !important;
 }
 
